@@ -170,15 +170,17 @@ fun AddInfoScreen(
 
         Button(
             onClick = {
-                if(accountType == "Aprendiz") {
-                    RetrofitInit().getAPIService().createApprentice(aprendiz)
-                    navController.navigate("MatchScreen?username=${aprendiz.username}&accountType=Apprentice")
-                }
-                else {RetrofitInit().getAPIService().createMentor(mentor)
-                    navController.navigate("MatchScreen?username=${mentor.username}&accountType=Mentor")
-                }
-                      Log.i("Dados Enviados para API", if(accountType == "Aprendiz") aprendiz.toString() else mentor.toString())
-
+//                if(accountType == "Aprendiz") {
+//                    RetrofitInit().getAPIService().createApprentice(aprendiz)
+//                    navController.navigate("MatchScreen?username=${aprendiz.username}&accountType=Apprentice")
+//                }
+//                else {
+//                    RetrofitInit().getAPIService().createMentor(mentor)
+//                    navController.navigate("MatchScreen?username=${mentor.username}&accountType=Mentor")
+//                }
+                Log.i("Dados Enviados para API", if(accountType == "Aprendiz") aprendiz.toString() else mentor.toString())
+                var username = "vinicius"
+                navController.navigate("MatchScreen?username=$username&accountType=Mentor")
 
 
 

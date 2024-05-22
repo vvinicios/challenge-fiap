@@ -35,21 +35,51 @@ import retrofit2.Response
 @Composable
 fun ConnectionsScreenApprentice(navController: NavController, username: String) {
 
-    var listConnection by remember {
-        mutableStateOf(listOf<Mentor>())
-    }
+//    var callListarMentores = RetrofitInit().getAPIService().getMatchsApprentice(username)
+//
+//    callListarMentores.enqueue(object : Callback<List<Mentor>>{
+//        override fun onResponse(call: Call<List<Mentor>>, response: Response<List<Mentor>>) {
+//            listConnection = response.body()!!
+//        }
+//
+//        override fun onFailure(call: Call<List<Mentor>>, t: Throwable) {
+//            Log.i("ERRO API", "ERRO AO RECUPERAR MENTORES")
+//        }
+//    })
 
-    var callListarMentores = RetrofitInit().getAPIService().getMatchsApprentice(username)
-
-    callListarMentores.enqueue(object : Callback<List<Mentor>>{
-        override fun onResponse(call: Call<List<Mentor>>, response: Response<List<Mentor>>) {
-            listConnection = response.body()!!
-        }
-
-        override fun onFailure(call: Call<List<Mentor>>, t: Throwable) {
-            Log.i("ERRO API", "ERRO AO RECUPERAR MENTORES")
-        }
-    })
+    val listHab = listOf("Python", "Django", "AWS")
+    val listConnection = listOf(
+        Apprentice(
+            "https://img.freepik.com/free-photo/man-with-blank-notebook_1187-2304.jpg",
+            "Angelo",
+            "AnGabSS",
+            "Mobile",
+            "2-4",
+            listHab.toString().replace("[", "").replace("]", ""),
+            "angelo@outlook.com",
+            "1355"
+        ),
+        Apprentice(
+            "https://img.freepik.com/psd-gratuitas/retrato-de-estudio-de-uma-jovem-estudante-adolescente_23-2150162514.jpg",
+            "Giovanna",
+            "gioseattle",
+            "DevOps",
+            "4-7",
+            listHab.toString().replace("[", "").replace("]", ""),
+            "gi@outlook.com",
+            "1784"
+        ),
+        Apprentice(
+            "https://img.freepik.com/free-photo/serious-pensive-young-student-looking-directly-camera_176532-8154.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1712880000&semt=ais",
+            "Diogo",
+            "tsumikage",
+            "Front-End",
+            "0-1",
+            listHab.toString().replace("[", "").replace("]", ""),
+            "diogo@outlook.com",
+            "2564"
+        )
+    )
 
 
 

@@ -27,37 +27,48 @@ fun MatchScreen(navController: NavController, currentUser: User) {
     var apprenticeData by remember {
         mutableStateOf(Apprentice())
     }
-
+    val listHab = listOf("Python", "Django", "AWS")
 
     var mentorData by remember {
         mutableStateOf(Mentor())
     }
 
+    var mentor = Mentor(
+        "1234",
+        "Angelo",
+        "AnGabSS",
+        "Mobile",
+        "2-4",
+        listHab.toString().replace("[", "").replace("]", ""),
+        "angelo@outlook.com",
+        "1355"
+    )
 
-    if (currentUser.accountType == "Apprentice") {
-        val call = RetrofitInit().getAPIService().getApprenticeByUsername(currentUser.username)
-        call.enqueue(object : Callback<Apprentice> {
-            override fun onResponse(call: Call<Apprentice>, response: Response<Apprentice>) {
-                apprenticeData = response.body()!!
-            }
 
-            override fun onFailure(call: Call<Apprentice>, t: Throwable) {
-                Log.i("ERRO API", "ERRO AO RECUPERAR APRENDIZ")
-            }
-        })
-    } else if (currentUser.accountType == "Mentor") {
-        val call = RetrofitInit().getAPIService().getMentorsByUsername(currentUser.username)
-        call.enqueue(object : Callback<Mentor> {
-            override fun onResponse(call: Call<Mentor>, response: Response<Mentor>) {
-                mentorData = response.body()!!
-            }
-
-            override fun onFailure(call: Call<Mentor>, t: Throwable) {
-                Log.i("ERRO API", "ERRO AO RECUPERAR APRENDIZ")
-
-            }
-        })
-    }
+//    if (currentUser.accountType == "Apprentice") {
+//        val call = RetrofitInit().getAPIService().getApprenticeByUsername(currentUser.username)
+//        call.enqueue(object : Callback<Apprentice> {
+//            override fun onResponse(call: Call<Apprentice>, response: Response<Apprentice>) {
+//                apprenticeData = response.body()!!
+//            }
+//
+//            override fun onFailure(call: Call<Apprentice>, t: Throwable) {
+//                Log.i("ERRO API", "ERRO AO RECUPERAR APRENDIZ")
+//            }
+//        })
+//    } else if (currentUser.accountType == "Mentor") {
+//        val call = RetrofitInit().getAPIService().getMentorsByUsername(currentUser.username)
+//        call.enqueue(object : Callback<Mentor> {
+//            override fun onResponse(call: Call<Mentor>, response: Response<Mentor>) {
+//                mentorData = response.body()!!
+//            }
+//
+//            override fun onFailure(call: Call<Mentor>, t: Throwable) {
+//                Log.i("ERRO API", "ERRO AO RECUPERAR APRENDIZ")
+//
+//            }
+//        })
+//    }
 
     if (currentUser.accountType == "Aprendiz") {
 
@@ -98,24 +109,57 @@ fun MatchScreen(navController: NavController, currentUser: User) {
             mutableStateOf(listOf<Apprentice>())
         }
 
+        val aprendizes = listOf(
+            Apprentice(
+                "https://img.freepik.com/free-photo/man-with-blank-notebook_1187-2304.jpg",
+                "Angelo",
+                "AnGabSS",
+                "Mobile",
+                "2-4",
+                listHab.toString().replace("[", "").replace("]", ""),
+                "angelo@outlook.com",
+                "1355"
+            ),
+            Apprentice(
+                "https://img.freepik.com/psd-gratuitas/retrato-de-estudio-de-uma-jovem-estudante-adolescente_23-2150162514.jpg",
+                "Giovanna",
+                "gioseattle",
+                "DevOps",
+                "4-7",
+                listHab.toString().replace("[", "").replace("]", ""),
+                "gi@outlook.com",
+                "1784"
+            ),
+            Apprentice(
+                "https://img.freepik.com/free-photo/serious-pensive-young-student-looking-directly-camera_176532-8154.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1712880000&semt=ais",
+                "Diogo",
+                "tsumikage",
+                "Front-End",
+                "0-1",
+                listHab.toString().replace("[", "").replace("]", ""),
+                "diogo@outlook.com",
+                "2564"
+            )
+        )
 
-        val call = RetrofitInit().getAPIService().getApprentice()
-        call.enqueue(object : Callback<List<Apprentice>>{
-            override fun onResponse(call: Call<List<Apprentice>>, response: Response<List<Apprentice>>) {
-                profiles = response.body()!!
-            }
 
-            override fun onFailure(call: Call<List<Apprentice>>, t: Throwable) {
-                Log.i("ERRO API", "ERRO AO RECUPERAR MENTORES")
-            }
-        })
+//        val call = RetrofitInit().getAPIService().getApprentice()
+//        call.enqueue(object : Callback<List<Apprentice>>{
+//            override fun onResponse(call: Call<List<Apprentice>>, response: Response<List<Apprentice>>) {
+//                profiles = response.body()!!
+//            }
+//
+//            override fun onFailure(call: Call<List<Apprentice>>, t: Throwable) {
+//                Log.i("ERRO API", "ERRO AO RECUPERAR MENTORES")
+//            }
+//        })
 
-        if (currentIndex < profiles.size) {
+        if (currentIndex < aprendizes.size) {
             MatchCard(
                 currentUser,
-                profile = profiles[currentIndex],
+                profile = aprendizes[currentIndex],
                 onLike = {
-                    likedPairs.add(mentorData to profiles[currentIndex])
+                    likedPairs.add(mentorData to aprendizes[currentIndex])
                     currentIndex++
                 },
                 onDislike = { currentIndex++ },

@@ -135,24 +135,26 @@ fun LoginScreen(navController: NavController) {
 
         Button(
             onClick = {
-                var isAppretince = false
-                var isMentor = false
-                for(app in apprenticeList){
-                if(app.username == nameState && app.senha == senhaState){
-                    navController.navigate("MatchScreen?username=${app.username}&accountType=Apprentice")
-                    isAppretince = true
-                }
-            }
-                for(mentor in mentorList){
-                    if(mentor.username == nameState && mentor.senha == senhaState){
-                        navController.navigate("MatchScreen?username=${mentor.username}&accountType=Mentor")
-                        isMentor = true
-                    }
-                }
-                if(!isAppretince && !isMentor){
-                    erroAutentication = true
-                }
+//                var isAppretince = false
+//                var isMentor = false
+//                for(app in apprenticeList){
+//                if(app.username == nameState && app.senha == senhaState){
+//                    navController.navigate("MatchScreen?username=${app.username}&accountType=Apprentice")
+//                    isAppretince = true
+//                }
+//            }
+//                for(mentor in mentorList){
+//                    if(mentor.username == nameState && mentor.senha == senhaState){
+//                        navController.navigate("MatchScreen?username=${mentor.username}&accountType=Mentor")
+//                        isMentor = true
+//                    }
+//                }
+//                if(!isAppretince && !isMentor){
+//                    erroAutentication = true
+//                }
 
+                var username = "vinicius"
+                navController.navigate("MatchScreen?username=$username&accountType=Mentor")
             },
             colors = ButtonDefaults.buttonColors(primaryBlue),
             shape = RoundedCornerShape(15.dp),
