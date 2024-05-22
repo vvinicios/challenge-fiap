@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1088159052337",
+    "project_id": "studymatch-9f907",
+    "storage_bucket": "studymatch-9f907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088159052337:android:79b68ae8c5afef01c05b10",
+        "android_client_info": {
+          "package_name": "br.com.fiap.studymatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRmAtG53TbQ7hG_cdS4cqSv_jf5_OmCJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
